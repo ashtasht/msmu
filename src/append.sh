@@ -5,14 +5,16 @@ P=$(cat $HOME/.cache/msmu/P)
 
 if [[ $# -eq 1 ]]; then
   F=$(find $D -iname "*$1*" -type f | sort -R | head -n 1)
-  if pgrep -x "gedit" > /dev/null; then
-    echo loadfile $F append-play | socat - $D/mpvsocket
-    ${(basename $F)%.*} >> $HOME/.cache/msmu/Q
-    cat $HOME/.cache/msmu/Q
-  else
-    echo asthasht
-    ./play.sh $1
-  fi
+  basename "$F" -s >> $HOME/.cache/msmu/Q
+  cat $HOME/.cache/msmu/Q
+  sha1sum "$F" & > /dev/null # Make HTTPDirFS cache the file
+  while [ -d "/proc/$P" ]; do
+    sleep 1
+  done
+  echo ashtsahtasht
+  echo $(head -n1 $HOME/.cache/msmu/Q)
+  ./play.sh "$(head -n1 $HOME/.cache/msmu/Q)"
+  echo "$(tail -n +2 $HOME/.cache/msmu/Q)" > $HOME/.cache/msmu/Q
 else
   echo "Please specify the song"
 fi
