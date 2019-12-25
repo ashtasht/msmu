@@ -1,2 +1,2 @@
-# ssmu
-Simple *Sonic Music Player
+# msmu
+Minimalistic *Sonic Music Player
