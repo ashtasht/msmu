@@ -24,7 +24,7 @@ I recommend you to bind some of these commands to your keyboard.
 Add some song to the end of the queue.
 
 ### ```msmu current```
-Print the current playing song with the following format:
+Print the current song with the following format:
 
 > artist - album (date) - song
 
